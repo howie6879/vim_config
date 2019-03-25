@@ -61,6 +61,10 @@ Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/opt/python/libexec/bin/python in
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Load jedi-vim
+" https://github.com/davidhalter/jedi-vim
+" Plug 'davidhalter/jedi-vim'
+
 " Load vim-gitgutter
 " https://github.com/airblade/vim-gitgutter
 Plug 'airblade/vim-gitgutter'
