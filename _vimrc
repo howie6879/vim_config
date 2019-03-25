@@ -51,6 +51,20 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " Target url: https://github.com/fatih/vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Load YouCompleteMe
+" https://github.com/Valloric/YouCompleteMe
+Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/opt/python/libexec/bin/python install.py --go-completer'}
+
+" Load SirVer/ultisnips honza/vim-snippets
+" https://github.com/SirVer/ultisnips
+" https://github.com/honza/vim-snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Load vim-gitgutter
+" https://github.com/airblade/vim-gitgutter
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " Basic Vim Configuration
@@ -106,3 +120,35 @@ map <F4> :TagbarToggle<CR>
 " Markdown settings
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
+
+" YCM settings
+" let g:ycm_server_python_interpreter='/Users/a2017148/anaconda3/bin/python3'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+" 让vim的补全菜单行为与一般IDE一致
+set completeopt=longest,menu
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+
+" UltiSnips setting
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" GuiGutter	
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
