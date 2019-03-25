@@ -69,6 +69,10 @@ Plug 'honza/vim-snippets'
 " https://github.com/airblade/vim-gitgutter
 Plug 'airblade/vim-gitgutter'
 
+" Load vim-cheat40
+" https://github.com/lifepillar/vim-cheat40
+Plug 'lifepillar/vim-cheat40'
+
 call plug#end()
 
 " Basic Vim Configuration
