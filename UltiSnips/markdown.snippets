@@ -1,0 +1,14 @@
+snippet head "Hugo post header" b
+---
+categories:
+  - ${1:cat}
+date: `!v strftime("%Y-%m-%d %H:%M:%S")`+08:00
+image: /images/thumbs/${2:img_name}.jpg
+tags: [${3:tag}]
+title: "${4:title}"
+markup: mmark
+toc: true
+comments: true
+---
+${0}
+endsnippet

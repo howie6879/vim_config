@@ -12,6 +12,10 @@ Plug 'vim-airline/vim-airline-themes'
 " https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree'
 
+" Load nerdcommenter
+" https://github.com/scrooloose/nerdcommenter
+Plug 'scrooloose/nerdcommenter'
+
 " Load tagbar
 " https://github.com/majutsushi/tagbar
 Plug 'majutsushi/tagbar'
@@ -40,7 +44,6 @@ Plug 'altercation/vim-colors-solarized'
 " Markdown Plugin
 " Load vim-markdown
 " https://github.com/plasticboy/vim-markdown
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " markdown-preview.vim
@@ -72,6 +75,10 @@ Plug 'airblade/vim-gitgutter'
 " Load vim-cheat40
 " https://github.com/lifepillar/vim-cheat40
 Plug 'lifepillar/vim-cheat40'
+
+" Load delimitMate
+" https://github.com/Raimondi/delimitMate
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
@@ -119,6 +126,8 @@ set guifont=Meslo\ LG\ S\ for\ Powerline:h13
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__','.DS_Store']
 
 " Tagbar settings
 let g:tagbar_width=35
@@ -160,3 +169,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
+" Vim-go
+let g:go_fmt_command = "goimports"
+let g:go_auto_sameids = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+
+" NERD Commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
