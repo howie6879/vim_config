@@ -127,7 +127,7 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__','.DS_Store']
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.git', '\.swo', '\.vscode', '__pycache__','.DS_Store']
 
 " Tagbar settings
 let g:tagbar_width=35
