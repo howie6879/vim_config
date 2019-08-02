@@ -78,7 +78,11 @@ Plug 'lifepillar/vim-cheat40'
 
 " Load delimitMate
 " https://github.com/Raimondi/delimitMate
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+
+" Load auto-pairs
+" https://github.com/jiangmiao/auto-pairs 
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -159,6 +163,13 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'mail' : 1
       \}
+" 开启各种补全引擎
+let g:ycm_collect_identifiers_from_tags_files=1         " 开启 YCM 基于标签引擎
+let g:ycm_auto_trigger = 1                  " 开启 YCM 基于标识符补全，默认为1
+let g:ycm_seed_identifiers_with_syntax=1                " 开启 YCM 基于语法关键字补全
+let g:ycm_complete_in_comments = 1              " 在注释输入中也能补全
+let g:ycm_complete_in_strings = 1               " 在字符串输入中也能补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0 " 注释和字符串中的文字也会被收入补全
 
 " UltiSnips setting
 let g:UltiSnipsExpandTrigger="<c-j>"
