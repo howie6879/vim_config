@@ -84,6 +84,9 @@ Plug 'lifepillar/vim-cheat40'
 " https://github.com/jiangmiao/auto-pairs 
 Plug 'jiangmiao/auto-pairs'
 
+" Load https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 
 " Basic Vim Configuration
@@ -131,7 +134,19 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.git', '\.swo', '\.vscode', '__pycache__','.DS_Store']
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__','.DS_Store']
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " Tagbar settings
 let g:tagbar_width=35
