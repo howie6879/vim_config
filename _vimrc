@@ -44,6 +44,7 @@ Plug 'altercation/vim-colors-solarized'
 " Markdown Plugin
 " Load vim-markdown
 " https://github.com/plasticboy/vim-markdown
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " markdown-preview.vim
