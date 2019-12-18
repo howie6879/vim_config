@@ -51,6 +51,10 @@ Plug 'plasticboy/vim-markdown'
 " https://github.com/iamcco/markdown-preview.vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
+" https://github.com/mzlogin/vim-markdown-toc
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'dhruvasagar/vim-table-mode'
+
 " Load vim-go
 " Target url: https://github.com/fatih/vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -208,3 +212,18 @@ let g:go_highlight_function_calls = 1
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+
+" vim-table-mode
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
