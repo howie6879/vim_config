@@ -12,9 +12,17 @@ Plug 'vim-airline/vim-airline-themes'
 " https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree'
 
-" Load nerdcommenter
+" Load undotree
+" https://github.com/mbbill/undotree
+Plug 'mbbill/undotree'
+
+"Load nerdcommenter
 " https://github.com/scrooloose/nerdcommenter
 Plug 'scrooloose/nerdcommenter'
+
+" Load rainbow
+" https://github.com/kien/rainbow_parentheses.vim
+Plug 'kien/rainbow_parentheses.vim'
 
 " Load tagbar
 " https://github.com/majutsushi/tagbar
@@ -40,6 +48,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " Load vim-colors-solarized
 " https://github.com/altercation/vim-colors-solarized
 Plug 'altercation/vim-colors-solarized'
+
+" https://github.com/morhetz/gruvbox
+Plug 'morhetz/gruvbox'
 
 " Markdown Plugin
 " Load vim-markdown
@@ -116,11 +127,13 @@ filetype plugin indent on
 " Color settings
 let g:solarized_termcolors=256
 if has('gui_running')
-    set background=light
+    set background=dark
+	colorscheme gruvbox
 	" colorscheme solarized
-	color dracula
+	" color dracula
 else
 	set background=dark
+	" color dracula
 	colorscheme solarized
 endif
 
@@ -128,7 +141,7 @@ endif
 "
 " Airline settings
 let g:airline_theme = 'molokai'
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set guifont=Meslo\ LG\ S\ for\ Powerline:h13
 " let g:airline#extensions#tabline#left_sep = ' '
@@ -152,6 +165,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+" Undotree settings
+nnoremap <F5> :UndotreeToggle<cr>
+let g:undotree_WindowLayout = 4
+set undodir=$HOME/.vim/undo/
+set undofile
 
 " Tagbar settings
 let g:tagbar_width=35
@@ -197,8 +216,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " GuiGutter	
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 " Vim-go
 let g:go_fmt_command = "goimports"
@@ -227,3 +246,29 @@ inoreabbrev <expr> <bar><bar>
 inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+" rainbow
+let g:rbpt_colorpairs = [
+    \ ['red',         'firebrick3'],
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
