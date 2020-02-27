@@ -141,11 +141,41 @@ endif
 "
 " Airline settings
 let g:airline_theme = 'molokai'
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 set guifont=Meslo\ LG\ S\ for\ Powerline:h13
-" let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"设置切换Buffer快捷键"
+nnoremap <C-N> :bn<CR>
+nnoremap <C-B> :bp<CR>
+let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" 关于buffer的配置
+" 避免必须保存修改才可以跳转buffer
+set hidden
+" normal 模式下使用 bl 列出 Buffer 列表
+nnoremap <silent> bl :ls<CR>
+" normal 模式下使用 bo 打开一个新 Buffer
+nnoremap <silent> bo :enew<CR>
+" normal 模式下使用 bn 切换到下一个 Buffer
+nnoremap <silent> bn :bnext<CR>
+" normal 模式下使用 bn 切换到上一个 Buffer
+nnoremap <silent> bp :bprevious<CR>
+" normal 模式下使用 bd 关闭当前 Buffer
+nnoremap <silent> bd :bdelete<CR>
+" 通过索引快速跳转
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " NerdTree settings
 map <F2> :NERDTreeToggle<CR>
