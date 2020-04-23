@@ -197,7 +197,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 " Undotree settings
-nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <F9> :UndotreeToggle<cr>
 let g:undotree_WindowLayout = 4
 set undodir=$HOME/.vim/undo/
 set undofile
