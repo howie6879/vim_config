@@ -32,6 +32,9 @@ Plug 'majutsushi/tagbar'
 " https://github.com/mhinz/vim-startify
 Plug 'mhinz/vim-startify'
 
+" Load https://github.com/dense-analysis/ale
+Plug 'dense-analysis/ale'
+
 " ctrlp.vim
 " https://github.com/kien/ctrlp.vim
 Plug 'kien/ctrlp.vim'
@@ -51,6 +54,9 @@ Plug 'altercation/vim-colors-solarized'
 
 " https://github.com/morhetz/gruvbox
 Plug 'morhetz/gruvbox'
+
+" https://github.com/skywind3000/asyncrun.vim
+Plug 'skywind3000/asyncrun.vim'
 
 " Markdown Plugin
 " Load vim-markdown
@@ -73,6 +79,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Load YouCompleteMe
 " https://github.com/Valloric/YouCompleteMe
 Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/opt/python/libexec/bin/python install.py --go-completer'}
+
+" https://github.com/davidhalter/jedi-vim
+Plug 'davidhalter/jedi-vim'
 
 " Load SirVer/ultisnips honza/vim-snippets
 " https://github.com/SirVer/ultisnips
@@ -302,3 +311,39 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+
+" ALE configuration
+let g:ale_python_auto_pipenv = 1
+let g:ale_linters = {
+	\ 'python': ['pylint'],
+	\}
+let g:ale_fixers = {
+	\ 'python': ['black', 'isort'],
+    \ }
+let g:ale_fix_on_save = 1
+" let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '⚡'
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+
+" Qickly run
+nnoremap <F5> :call CompileRunGcc()<cr>
+
+func! CompileRunGcc()
+          exec "w"
+          if &filetype == 'python'
+                  if search("@profile")
+                          exec "AsyncRun kernprof -l -v %"
+                          exec "copen"
+                          exec "wincmd p"
+                  elseif search("set_trace()")
+                          exec "!python %"
+                  else
+                          exec "AsyncRun -raw python %"
+                          exec "copen"
+                          exec "wincmd p"
+                  endif
+          endif
+
+	  endfunc
