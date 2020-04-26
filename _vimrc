@@ -68,6 +68,12 @@ Plug 'plasticboy/vim-markdown'
 " https://github.com/iamcco/markdown-preview.vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
+" https://github.com/vim-python/python-syntax
+Plug 'vim-python/python-syntax'
+
+" https://github.com/itchyny/vim-cursorword
+Plug 'itchyny/vim-cursorword'
+
 " https://github.com/mzlogin/vim-markdown-toc
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'dhruvasagar/vim-table-mode'
@@ -322,6 +328,9 @@ let g:ale_fixers = {
 	\ 'python': ['black', 'isort'],
     \ }
 let g:ale_fix_on_save = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
 " let g:ale_sign_error = '✗'
 " let g:ale_sign_warning = '⚡'
 nmap sp <Plug>(ale_previous_wrap)
@@ -347,3 +356,6 @@ func! CompileRunGcc()
           endif
 
 	  endfunc
+
+" Python syntax
+let g:python_highlight_all = 1
