@@ -71,9 +71,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " https://github.com/vim-python/python-syntax
 Plug 'vim-python/python-syntax'
 
-" https://github.com/heavenshell/vim-pydocstring
-Plug 'heavenshell/vim-pydocstring'
-
 " https://github.com/itchyny/vim-cursorword
 Plug 'itchyny/vim-cursorword'
 
@@ -358,5 +355,3 @@ func! CompileRunGcc()
 
 " Python syntax
 let g:python_highlight_all = 1
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-nmap <silent> <C-_> <Plug>(pydocstring)
