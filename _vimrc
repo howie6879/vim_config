@@ -26,7 +26,10 @@ Plug 'kien/rainbow_parentheses.vim'
 
 " Load tagbar
 " https://github.com/majutsushi/tagbar
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+
+" https://github.com/liuchengxu/vista.vim
+Plug 'liuchengxu/vista.vim'
 
 " Load Plug vim-startify
 " https://github.com/mhinz/vim-startify
@@ -87,7 +90,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/opt/python/libexec/bin/python install.py --go-completer'}
 
 " https://github.com/davidhalter/jedi-vim
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 " Load SirVer/ultisnips honza/vim-snippets
 " https://github.com/SirVer/ultisnips
@@ -97,7 +100,7 @@ Plug 'honza/vim-snippets'
 
 " Load jedi-vim
 " https://github.com/davidhalter/jedi-vim
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 
 " Load vim-gitgutter
 " https://github.com/airblade/vim-gitgutter
@@ -193,7 +196,7 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__','.DS_Store']
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.idea', '\.vscode', '__pycache__', '\.DS_Store', '\.git']
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -214,9 +217,24 @@ set undodir=$HOME/.vim/undo/
 set undofile
 
 " Tagbar settings
-let g:tagbar_width=35
-let g:tagbar_autofocus=1
-map <F4> :TagbarToggle<CR>
+" let g:tagbar_width=35
+" let g:tagbar_autofocus=1
+" map <F4> :TagbarToggle<CR>
+
+" vista configuration
+let g:vista#renderer#enable_icon = 0
+let g:vista_echo_cursor_strategy = 'floating_win'
+map <F4> :Vista!!<CR>
+
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista_sidebar_width = 35
+let g:vista_default_executive = 'ctags'
 
 " Markdown settings
 let g:vim_markdown_folding_disabled = 1
@@ -224,7 +242,8 @@ let g:vim_markdown_math = 1
 
 " YCM settings
 " let g:ycm_server_python_interpreter='/Users/a2017148/anaconda3/bin/python3'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+" let g:ycm_key_invoke_completion = ''
 " 让vim的补全菜单行为与一般IDE一致
 set completeopt=longest,menu
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -235,7 +254,6 @@ let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
       \ 'notes' : 1,
-      \ 'markdown' : 1,
       \ 'unite' : 1,
       \ 'text' : 1,
       \ 'vimwiki' : 1,
@@ -355,3 +373,4 @@ func! CompileRunGcc()
 
 " Python syntax
 let g:python_highlight_all = 1
+let g:ultisnips_python_style = 'sphinx'
