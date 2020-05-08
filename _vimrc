@@ -148,7 +148,8 @@ if has('gui_running')
 else
 	set background=dark
 	" color dracula
-	colorscheme solarized
+	colorscheme gruvbox
+	" colorscheme solarized
 endif
 
 " Plugin Congiguration
@@ -196,7 +197,7 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.idea', '\.vscode', '__pycache__', '\.DS_Store', '\.git']
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.idea', '\.vscode', '__pycache__', '\.DS_Store', '\.git$']
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
