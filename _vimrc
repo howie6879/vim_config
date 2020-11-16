@@ -117,6 +117,9 @@ Plug 'jiangmiao/auto-pairs'
 " Load https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" Load https://github.com/heavenshell/vim-pydocstring
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+
 call plug#end()
 
 " Basic Vim Configuration
@@ -375,3 +378,7 @@ func! CompileRunGcc()
 " Python syntax
 let g:python_highlight_all = 1
 let g:ultisnips_python_style = 'sphinx'
+
+" pydocstring
+let g:pydocstring_formatter = 'sphinx'
+nmap <silent> <C-_> <Plug>(pydocstring)
