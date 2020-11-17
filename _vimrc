@@ -201,7 +201,7 @@ let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.idea', '\.vscode', '__pycache__', '\.DS_Store', '\.git$']
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom= {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -292,7 +292,7 @@ let g:go_highlight_function_calls = 1
 
 " NERD Commenter
 " Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 0
 let g:NERDCompactSexyComs = 1
 
 " vim-table-mode
