@@ -9,8 +9,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Load nerdtree
-" https://github.com/scrooloose/nerdtree
-Plug 'scrooloose/nerdtree'
+" https://github.com/preservim/nerdtree
+Plug 'preservim/nerdtree'
+
+" Load https://github.com/Xuyuanp/nerdtree-git-plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Load undotree
 " https://github.com/mbbill/undotree
@@ -89,9 +92,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " https://github.com/Valloric/YouCompleteMe
 Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/opt/python/libexec/bin/python install.py --go-completer'}
 
-" https://github.com/davidhalter/jedi-vim
-" Plug 'davidhalter/jedi-vim'
-
 " Load SirVer/ultisnips honza/vim-snippets
 " https://github.com/SirVer/ultisnips
 " https://github.com/honza/vim-snippets
@@ -114,11 +114,14 @@ Plug 'lifepillar/vim-cheat40'
 " https://github.com/jiangmiao/auto-pairs 
 Plug 'jiangmiao/auto-pairs'
 
-" Load https://github.com/Xuyuanp/nerdtree-git-plugin
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " Load https://github.com/heavenshell/vim-pydocstring
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+
+"Load vim-devicons
+"https://github.com/ryanoasis/vim-devicons
+Plug 'ryanoasis/vim-devicons'
+
+
 
 call plug#end()
 
@@ -160,7 +163,7 @@ endif
 " Airline settings
 let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts = 1
-set guifont=Meslo\ LG\ S\ for\ Powerline:h13
+set guifont=DroidSansMono\ Nerd\ Font:h13
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
@@ -198,9 +201,13 @@ nnoremap <Leader>0 :10b<CR>
 " NerdTree settings
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.idea', '\.vscode', '__pycache__', '\.DS_Store', '\.git$']
+" show ignore status
+let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeGitStatusIndicatorMapCustom= {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -382,3 +389,9 @@ let g:ultisnips_python_style = 'sphinx'
 " pydocstring
 let g:pydocstring_formatter = 'sphinx'
 nmap <silent> <C-_> <Plug>(pydocstring)
+
+"get rid of [  ] around icons in NerdTree
+syntax enable
+if exists("g:loaded_webdevicons")
+	call webdevicons#refresh()
+endif
