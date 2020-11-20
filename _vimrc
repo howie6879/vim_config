@@ -64,10 +64,12 @@ Plug 'morhetz/gruvbox'
 " https://github.com/skywind3000/asyncrun.vim
 Plug 'skywind3000/asyncrun.vim'
 
+" https://github.com/godlygeek/tabular
+Plug 'godlygeek/tabular'
+
 " Markdown Plugin
 " Load vim-markdown
 " https://github.com/plasticboy/vim-markdown
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " markdown-preview.vim
@@ -395,3 +397,6 @@ syntax enable
 if exists("g:loaded_webdevicons")
 	call webdevicons#refresh()
 endif
+
+" vim md config
+set conceallevel=0
