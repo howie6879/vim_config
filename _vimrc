@@ -203,6 +203,7 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 
 " NerdTree settings
+set rtp+=~/.vim/plugged/nerdtree
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 autocmd StdinReadPre * let s:std_in=1
