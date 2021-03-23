@@ -92,7 +92,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Load YouCompleteMe
 " https://github.com/Valloric/YouCompleteMe
-Plug 'Valloric/YouCompleteMe',{'do':'python install.py --go-completer'}
+Plug 'Valloric/YouCompleteMe',{'do':'/usr/local/bin/python3 install.py --go-completer'}
 
 " Load SirVer/ultisnips honza/vim-snippets
 " https://github.com/SirVer/ultisnips
