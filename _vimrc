@@ -377,9 +377,9 @@ func! CompileRunGcc()
                           exec "copen"
                           exec "wincmd p"
                   elseif search("set_trace()")
-                          exec "!python %"
+                          exec "!pipenv run python %"
                   else
-                          exec "AsyncRun -raw python %"
+                          exec "AsyncRun -raw pipenv run python %"
                           exec "copen"
                           exec "wincmd p"
                   endif
