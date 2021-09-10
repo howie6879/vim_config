@@ -2,9 +2,22 @@
 
 > 我的vim配置记录
 
-![Xtjaxy](https://raw.githubusercontent.com/howie6879/oss/master/images/Xtjaxy.jpg)
+![demo](https://raw.githubusercontent.com/howie6879/oss/master/images/Xtjaxy.jpg)
+
+## Useage
+
+```shell
+git clone https://github.com/howie6879/vim_config.git
+ln -s ~/.vim/.vimrc ~/.vimrc
+
+# Add ctags for vista.vim
+# mac
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+
+# Extencion for COC
+CocInstall coc-pyright
+```
 
 Tips:
-- 关于YCM：切记将`Python`解释器版本切换到本机自带的，比如我这里使用：`/usr/local/opt/python/libexec/bin/python `
-- 关于插件[vim-devicons](https://github.com/ryanoasis/vim-devicons)的`icon`：依赖[nerd-fonts](https://github.com/ryanoasis/nerd-fonts#font-installation)
+- 关于插件[vim-devicons](https://github.com/ryanoasis/vim-devicons)的`icon`：依赖[nerd-fonts]()
 
