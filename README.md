@@ -16,6 +16,7 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 # Extencion for COC
 CocInstall coc-pyright
+CocInstall coc-tabnine
 ```
 
 Tips:

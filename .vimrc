@@ -317,8 +317,8 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
 let g:ale_lint_delay = 500
-" let g:ale_sign_error = '✗'
-" let g:ale_sign_warning = '⚡'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = 'w'
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
 
@@ -536,6 +536,4 @@ augroup hugefile
         \ endif |
         \ unlet size
 augroup END
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
-let g:coc_global_extensions = [ 'coc-pyright' ]
 
