@@ -18,6 +18,9 @@ Plug 'preservim/nerdtree'
 " Load https://github.com/Xuyuanp/nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" Load https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
+
 " Load undotree
 " https://github.com/mbbill/undotree
 Plug 'mbbill/undotree'
@@ -161,8 +164,17 @@ let g:airline_theme = 'onedark'
 let g:airline_powerline_fonts = 1
 set guifont=DroidSansMono\ Nerd\ Font:h13
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_highlighting_cache = 1
+let g:airline_extensions = ['tabline', 'hunks', 'branch']
+function! AirlineInit()
+  " section a: mode & VCS info; VCS info is provided by vim-fugitive
+  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+  " section b: hunks info, provided by vim-gitgutter
+  let g:airline_section_b = airline#section#create(['hunks'])
+endfunction
+
+autocmd VimEnter * call AirlineInit()
 
 "设置切换Buffer快捷键"
 nnoremap <C-N> :bn<CR>
@@ -536,4 +548,3 @@ augroup hugefile
         \ endif |
         \ unlet size
 augroup END
-
